@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'users/show'
+  get 'users/edit'
+  get 'users/update'
   get 'homes/top'
   get 'homes/about'
 # 顧客用 
@@ -18,7 +21,7 @@ Rails.application.routes.draw do
     root to: "homes#top" 
   
     get "/about" =>"homes#about",as: 'about'
-    get "/users/mypage" =>"users#mypage",as: 'mypage'
+    get "/users/myapage" =>"users#mypage",as: 'mypage'
     get "/users/information/edit" =>"users#edit",as: 'edit'
     patch "/users/information" =>"users#update",as: 'update'
     resources :movies
