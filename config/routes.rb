@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     get "/users/myapage" =>"users#mypage",as: 'mypage'
     get "/users/information/edit" =>"users#edit",as: 'edit'
     patch "/users/information" =>"users#update",as: 'update'
+    get "/movies/search" =>"movies#search",as: 'search'
     resources :movies
-  
   
   end
   
