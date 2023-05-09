@@ -59,11 +59,10 @@ ActiveRecord::Schema.define(version: 2023_05_02_094013) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.integer "price"
-    t.boolean "is_active", default: true
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.text "review_contents"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

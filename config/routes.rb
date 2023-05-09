@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     patch "/users/information" =>"users#update",as: 'update'
     get "/movies/search" =>"movies#search",as: 'search'
     resources :movies
+    resources :reviews
   
   end
   

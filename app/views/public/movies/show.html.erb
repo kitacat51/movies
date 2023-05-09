@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= image_tag "https://image.tmdb.org/t/p/w1280#{@movieinfo['poster_path']}", class: 'img-fluid'%>
+        </div>
+        <div class="col-md-6">
+            <h2><%= @movieinfo['title'] %></h2>
+            <div class="overview">
+                <%= @movieinfo['overview'] %>
+            </div>
+            <div class="genres mt-3">
+                <h3>ジャンル</h3>
+                <ul>
+                    <% @movieinfo['genres'].each do |genre| %>
+                        <li><%= genre.name %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <%= link_to 'Review', new_review_path(movie_id: params[:id]) %>
+        </div>
+    </div>
+</div>
