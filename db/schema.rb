@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_02_094013) do
+ActiveRecord::Schema.define(version: 2023_05_10_115806) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 2023_05_02_094013) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "movie_genres", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_movie_genres_on_genre_id"
+    t.index ["movie_id"], name: "index_movie_genres_on_movie_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
@@ -83,4 +92,6 @@ ActiveRecord::Schema.define(version: 2023_05_02_094013) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "movie_genres", "genres"
+  add_foreign_key "movie_genres", "movies"
 end
