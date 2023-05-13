@@ -10,6 +10,7 @@ class Public::MoviesController < ApplicationController
   if params[:looking_for].present?
    @movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json)
   else
+   byebug
    @movieinfo = JSON.parse((Tmdb::Movie.popular).to_json)
   end
  end
