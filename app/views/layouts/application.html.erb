@@ -30,7 +30,7 @@
               <% end %>
              </li>
              <li>
-              <%= link_to mypage_path(current_user.id),method: :get, class:'nav-link text-light' do %>
+              <%= link_to mypage_path,method: :get, class:'nav-link text-light' do %>
                 <i class="fas fa-users"></i> Mypage
               <% end %>
              </li>
@@ -78,7 +78,7 @@
              </li>
              <li>
               <%= link_to search_path,method: :get,class:'nav-link text-light' do %>
-               <i class="fas fa-film"></i>Movies
+               <i class="fas fa-search"></i></i>Movies Search
               <% end %>
              </li>
              <li>

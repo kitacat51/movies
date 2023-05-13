@@ -5,14 +5,14 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
+      redirect_to mypage_path(@user.id)
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class Public::UsersController < ApplicationController
   end
 
   def withdrawal
-    @user = current_customer
+    @user = current_user
       if @user.update(is_deleted: true)
          reset_session
          redirect_to root_path
@@ -34,7 +34,7 @@ class Public::UsersController < ApplicationController
   
  private
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :introduction)
     end
     
     def is_matching_login_user

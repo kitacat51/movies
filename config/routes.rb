@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'users/show'
   get 'users/edit'
   get 'users/update'
   get 'homes/top'
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
     patch "/users/information" =>"users#update",as: 'update'
     get "/movies/search" =>"movies#search",as: 'search'
     resources :movies
-    resources :reviews
+    resources :review
   
   end
   

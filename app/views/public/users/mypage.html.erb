@@ -1,0 +1,23 @@
+<div><%= flash[:notice] %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+        <label for="user_name">Name</label>
+         <div class>
+             <%#= @user.name %>
+         </div>
+         <label for="email">Email</label>
+         <div class>
+             <%#= @user.email %>
+         </div>
+         <label for="user_introduction">Introduction</label>
+         <div class>
+             <%#= @user.introduction %>
+         </div>
+         <%= link_to "Edit", edit_path, class:"btn btn-sm btn-success" %>
+    </div>
+  </div>
+</div>
+
+    
