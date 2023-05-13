@@ -5,12 +5,13 @@ class Public::ReviewsController < ApplicationController
     end
     
     def create
+        
         @movieinfo = Tmdb::Movie.detail(params[:movie_id])
         
         
         # 1. ジャンルテーブルに、@movieinfoのジャンルがなければ、ジャンルを自動で追加されるようにする(ヒント: find_or_create_by)
         # @movieinfo['genres'].each do |genre|
-        #     Genre.find_or_create_by(name: genres.name)
+        #  Genre.find_or_create_by(name: genre.name)
         # end
         
         # 2. ジャンルと映画をつなぐ中間テーブルに映画テーブルのIDとジャンルIDを入れるようにする(ヒント: moview_genreかな…)

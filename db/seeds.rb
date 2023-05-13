@@ -16,6 +16,11 @@ require 'themoviedb-api'
 
 JSON.parse((Tmdb::Movie.popular).to_json)["table"]["results"].each do |movie|
   byebug
-  Movie.create(overview: movie["table"]["overview"], title: movie["table"]["title"], published: movie["table"]["release_date"], genre_id: movie["table"]["genres"], image: movie["table"]['poster_path'])
+  Movie.create(overview: movie["table"]["overview"], 
+               title: movie["table"]["title"], 
+               published: movie["table"]["release_date"], 
+               genre_id: movie["table"]["genres"], 
+               image: movie["table"]["poster_path"])
+
 end
 
