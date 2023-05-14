@@ -24,6 +24,12 @@ class Public::ReviewsController < ApplicationController
         
     end
     
+    def show
+        @movieinfo = Tmdb::Movie.detail(params[:movie_id])
+        @review = Review.find(params[:id])
+        @user = @review.user
+    end
+    
     private
     
     def movie_params
