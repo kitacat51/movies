@@ -16,6 +16,7 @@ class Public::MoviesController < ApplicationController
  end
 
  def show
+  @movie = Movie.find(params[:id])
   @movieinfo = Tmdb::Movie.detail(params[:id])
   if @movieinfo.blank?
     @movieinfo = Tmdb::Movie.detail(@movieinfo.id)
@@ -49,5 +50,9 @@ class Public::MoviesController < ApplicationController
   
   
  end
+ private 
+  def movie_params
+      params.require(:movie).permit(:title, :overview, :published, :image)
+  end
     
 end
