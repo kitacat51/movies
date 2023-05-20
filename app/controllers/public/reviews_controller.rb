@@ -31,6 +31,10 @@ class Public::ReviewsController < ApplicationController
         @user = @review.user
     end
     
+    def index
+        @reviews = Review.all
+    end
+    
     private
     
     def review_params
