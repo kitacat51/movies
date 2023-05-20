@@ -35,6 +35,11 @@
               <% end %>
              </li>
              <li>
+              <%= link_to reviews_path,method: :get,class:'nav-link text-light' do %>
+              <i class="fas fa-comment-edit"></i>Reviews
+              <% end %>
+             </li>
+             <li>
               <%= link_to mypage_path,method: :get, class:'nav-link text-light' do %>
                 <i class="fas fa-users"></i> Mypage
               <% end %>
@@ -63,6 +68,11 @@
              <li>
               <%= link_to admin_genres_path,method: :get,class:'nav-link text-light' do %>
                 <i class="fas fa-film"></i>Genres
+              <% end %>
+             </li>
+             <li>
+              <%= link_to reviews_path,method: :get,class:'nav-link text-light' do %>
+              <i class="fas fa-comment-edit"></i>Reviews
               <% end %>
              </li>
              <li>

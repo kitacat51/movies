@@ -3,19 +3,25 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
-        <label for="user_name">Name</label>
+        <label for="user_name">名前</label>
          <div class>
-             <%#= @user.name %>
+             <%= @user.name %>
          </div>
-         <label for="email">Email</label>
+         <label for="email">メールアドレス</label>
          <div class>
-             <%#= @user.email %>
+             <%= @user.email %>
          </div>
-         <label for="user_introduction">Introduction</label>
+         <label for="user_introduction">ひとこと。</label>
          <div class>
-             <%#= @user.introduction %>
+             <%= @user.introduction %>
          </div>
-         <%= link_to "Edit", edit_path, class:"btn btn-sm btn-success" %>
+         
+          <label for="user_introduction">Review</label>
+         <div class>
+             <%#= @user.review.all %>
+         </div>
+         <%= link_to "編集", edit_path, class:"btn btn-sm btn-success" %>
+         <%#= link_to "退会", unsubscribe_path,method: :get,class:"btn btn-danger" %>
     </div>
   </div>
 </div>

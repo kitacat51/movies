@@ -4,8 +4,12 @@
             <%= image_tag "https://image.tmdb.org/t/p/w1280#{@movie.image}", class: 'img-fluid'%>
         </div>
         <div class="col-md-6">
+            <%# Tmdb-APIによって送られた情報を全て表示する %>
             <%#= @movieinfo.inspect %>
             <h2><%= @movie.title %></h2>
+            <div class="published">
+                <h4>公開日/<%= @movie.published %></h4>
+            </div>
             <div class="overview">
                 <%= @movie.overview %>
             </div>
