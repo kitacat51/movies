@@ -1,13 +1,14 @@
 class Public::ReviewsController < ApplicationController
     def new
-        @movieinfo = Tmdb::Movie.detail(params[:movie_id])
-        @movie = Movie.new
+        @movie = Movie.find(params[:movie_id])
+        @review = Review.new
     end
     
     def create
         
-        @movieinfo = Tmdb::Movie.detail(params[:movie_id])
-        
+        @review = Review.new(review_params)
+        @review.save
+         redirect_to movie_path(@review.movie.tmdb_id)
         
         # 1. ジャンルテーブルに、@movieinfoのジャンルがなければ、ジャンルを自動で追加されるようにする(ヒント: find_or_create_by)
         # @movieinfo['genres'].each do |genre|
@@ -25,14 +26,14 @@ class Public::ReviewsController < ApplicationController
     end
     
     def show
-        @movieinfo = Tmdb::Movie.detail(params[:movie_id])
+        @movie = Movie.find(params[:movie_id])
         @review = Review.find(params[:id])
         @user = @review.user
     end
     
     private
     
-    def movie_params
-        params.require(:movie).permit(:movie_id, :review_contents, :rate).merge(user_id: current_user.id)
+    def review_params
+        params.require(:review).permit(:movie_id, :review_contents, :rate).merge(user_id: current_user.id)
     end
 end

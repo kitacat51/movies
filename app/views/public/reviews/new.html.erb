@@ -1,6 +1,6 @@
 <div class="container">
-    <h2><%= @movieinfo['title'] %></h2>
-    <%= form_with model: @movie, path: reviews_path, method: :post do |f| %>
+    <h2><%= @movie.title %></h2>
+    <%= form_with model: @review, path: reviews_path, method: :post do |f| %>
         <%= f.hidden_field :movie_id, value: params[:movie_id] %>
         <div class="form-group">
             <%= f.label :review_contents %>

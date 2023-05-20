@@ -16,11 +16,8 @@ class Public::MoviesController < ApplicationController
  end
 
  def show
-  @movie = Movie.find(params[:id])
-  @movieinfo = Tmdb::Movie.detail(params[:id])
-  if @movieinfo.blank?
-    @movieinfo = Tmdb::Movie.detail(@movieinfo.id)
-  end
+  @movie = Movie.find_by(tmdb_id: params[:id])
+  
  end
     
  def create

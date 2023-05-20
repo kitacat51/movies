@@ -19,7 +19,8 @@ JSON.parse((Tmdb::Movie.popular).to_json)["table"]["results"].each do |movie|
   n_movie = Movie.create!(overview: movie["table"]["overview"], 
                title: movie["table"]["title"], 
                published: movie["table"]["release_date"], 
-               image: movie["table"]["poster_path"])  
+               image: movie["table"]["poster_path"],
+               tmdb_id: movie["table"]["id"])
              
  Tmdb::Movie.detail(movie["table"]["id"])["genres"].pluck(:name).each do |genre|
      n_genre = Genre.find_by(name: genre)

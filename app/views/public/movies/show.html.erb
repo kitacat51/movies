@@ -1,24 +1,33 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <%= image_tag "https://image.tmdb.org/t/p/w1280#{@movieinfo['poster_path']}", class: 'img-fluid'%>
+            <%= image_tag "https://image.tmdb.org/t/p/w1280#{@movie.image}", class: 'img-fluid'%>
         </div>
         <div class="col-md-6">
-            <h2><%#= @movieinfo['title'] %></h2>
-            <h2><%= @movie["table"]["title"] %></h2>
+            <%#= @movieinfo.inspect %>
+            <h2><%= @movie.title %></h2>
             <div class="overview">
-                <%= @movieinfo['overview'] %>
+                <%= @movie.overview %>
             </div>
             <div class="genres mt-3">
                 <h3>ジャンル</h3>
                 <ul>
-                    <% @movieinfo['genres'].each do |genre| %>
+                    <% @movie.genres.each do |genre| %>
                     
                         <li><%= genre.name %></li>
                     <% end %>
                 </ul>
             </div>
-            <%= link_to 'Review', new_review_path(movie_id: params[:id]) %>
+            <%= link_to 'Review', new_review_path(movie_id: @movie.id) %>
+            <div class="genres mt-3">
+                <h3>レビュー</h3>
+                <ul>
+                    <% @movie.reviews.each do |review| %>
+                    
+                        <li><%= review.review_contents %></li>
+                    <% end %>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
