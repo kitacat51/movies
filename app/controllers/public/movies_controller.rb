@@ -7,8 +7,19 @@ class Public::MoviesController < ApplicationController
   end 
  
  def search
+  #byebug
   if params[:looking_for].present?
    @movieinfo = JSON.parse((Tmdb::Search.movie(params[:looking_for])).to_json)
+  elsif params[:movie_genre].present?
+  # genre_id = Genre.find_by(name: params[:movie_genre]).id
+  # movie_ids = MovieGenre.where(genre_id: genre_id).pluck(:movie_id)
+  # movies = Movie.where(id: movie_ids)
+   genre = Genre.find_by(name: params[:movie_genre])
+   movies = genre.movies
+   @movieinfo = JSON.parse((Tmdb::Search.movie([])).to_json)
+   movies.each do |movie|
+     @movieinfo["table"]["results"] << JSON.parse((Tmdb::Search.movie(movie.title)).to_json)["table"]["results"][0]
+   end
   else
    #byebug
    @movieinfo = JSON.parse((Tmdb::Movie.popular).to_json)
@@ -41,6 +52,7 @@ class Public::MoviesController < ApplicationController
     end
    end
   end
+  #Tmddからどんな情報が取得できているか表示するときに使う
   #@movieinfo = Tmdb::Movie.detail(params[:id])
   #if @movieinfo.blank?
   #  @movieinfo = Tmdb::Movie.detail(@movieinfo.id)
@@ -58,21 +70,7 @@ class Public::MoviesController < ApplicationController
                 rate: 0.0)
   
   redirect_to movie_path(@movieinfo.id)
-  # 1. ジャンルテーブルに、@movieinfoのジャンルがなければ、
-  # ジャンルを自動で追加されるようにする(ヒント: find_or_create_by)
-  #@movieinfo[:genres].each do |genre|
-  # Genre.find_or_create_by(name: genre.name)
-  #end
-        
-  # 2. ジャンルと映画をつなぐ中間テーブルに映画テーブルのIDとジャンルIDを入れるようにする(ヒント: moview_genreかな…)
-  #   2.1 テーブル作成
-  #   2.2 中間テーブルにデータの入れ方を調べる
-        
-  # 3. 中間テーブルに(1)のジャンルと紐づけたものを入れる
-        
-  # 4. 投稿されたデータをMovieテーブルに書き込む
-  
-  
+
  end
  private 
   def movie_params

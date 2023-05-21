@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
    end
 
    protected
-
+    
+    #nameも認証条件に入るようにしている
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     end
