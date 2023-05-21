@@ -6,13 +6,6 @@
     <%= submit_tag '検索' %>
   <% end %>
 </div>
-<h1>ジャンル検索</h1>
-<div>
-  <%= form_with local: true, method: :get do |form| %>
-    <%= form.text_field :keyword %>
-    <%= form.submit '検索' %>
-  <% end %>
-</div>
 
 <div class="container px-5 px-sm-0">
 <%# 検索された時にコンテンツを表示する %>

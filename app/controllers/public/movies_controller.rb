@@ -18,6 +18,33 @@ class Public::MoviesController < ApplicationController
  def show
   @movie = Movie.find_by(tmdb_id: params[:id])
   
+  # searchと併用しているため、Movieがデータがない場合、
+  # データを作成してからshowページを表示するようにしている。
+  if @movie.nil?
+   movie = Tmdb::Movie.detail(params[:id])
+   
+   @movie = Movie.create!(overview: movie["overview"], 
+              title: movie["title"], 
+              published: movie["release_date"], 
+              image: movie["poster_path"],
+              tmdb_id: movie["id"])
+   
+   # ジャンルを中間テーブルに生成する
+   movie['genres'].each do |genre|
+    n_genre = Genre.find_by(name: genre.name)
+   
+    if !n_genre
+        n_genre = Genre.create!(name: genre.name)
+        n_genre.movie_genres.create!(movie_id: @movie.id)
+    else
+     n_genre.movie_genres.create!(movie_id: @movie.id)
+    end
+   end
+  end
+  #@movieinfo = Tmdb::Movie.detail(params[:id])
+  #if @movieinfo.blank?
+  #  @movieinfo = Tmdb::Movie.detail(@movieinfo.id)
+  #end
  end
     
  def create
