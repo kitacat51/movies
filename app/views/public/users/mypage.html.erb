@@ -16,10 +16,23 @@
              <%= @user.introduction %>
          </div>
          
-          <label for="user_introduction">Review</label>
-         <div class>
-             <%#= @user.review.all %>
-         </div>
+         <label for="review"></label>
+         <table class>
+            <thead>
+              <tr>
+                <th>Review</th>
+              </tr>
+            </thead>
+            <% @reviews.each do |review| %>
+            <tbody>
+            <td>
+                <%= link_to review_path(review.id) do %>
+                <%= review.movie.title %>
+                <% end %>
+            </td>
+            </tbody>
+            <% end %>
+         </table>
          <%= link_to "編集", edit_path, class:"btn btn-sm btn-success" %>
          <%#= link_to "退会", unsubscribe_path,method: :get,class:"btn btn-danger" %>
     </div>

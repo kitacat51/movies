@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
+    @reviews = @user.reviews
   end
 
   def edit

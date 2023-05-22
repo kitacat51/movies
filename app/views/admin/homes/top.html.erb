@@ -6,6 +6,7 @@
            <thead>
                <tr>
                    <th>投稿日時</th>
+                   <th>映画タイトル</th>
                    <th>ユーザー名</th>
                </tr>
            </thead>
@@ -15,6 +16,9 @@
                 <%= link_to admin_review_path(review.id) do %>
                 <%= review.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                 <% end %>
+            </td>
+            <td>
+                <%= review.movie.title %>
             </td>
             <td>
                 <%= review.user.name %>
