@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
     def show
         #@movie = Movie.find(params[:movie_id])
         @review = Review.find(params[:id])
-        @user = current_user
+        @user = @review.user.id
         @movie = Movie.find_by(tmdb_id: params[:id])
     end
     

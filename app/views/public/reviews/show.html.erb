@@ -10,7 +10,20 @@
               <%# end %>
           </td>
           <td><%= @review.review_contents %></td>
-           <% if @user == current_user %>
+          <td>
+           <span id="star-rate-<%= post.id %>"></span>
+           <script>
+              $('#star-rate-<%= post.id %>').raty({
+              size: 36,
+              starOff: "<%= asset_path('star-off.png') %>",
+              starOn: "<%= asset_path('star-on.png') %>",
+              readOnly: true,   # 読み取り専用
+              score: <%= post.evaluation %>,   # 星評価の表示
+              });
+           </script>
+          </td>
+          <%# binding.pry%>
+           <% if @user == current_user.id %>
              <td><%= link_to "Edit", edit_review_path(@review.id), class:"btn btn-sm btn-success" %></td>
              <td><%= link_to "Destroy", review_path,method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
            <% end %>
