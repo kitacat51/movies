@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'users/edit'
   get 'users/update'
   get 'homes/top'
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get "/movies/search" =>"movies#search",as: 'search'
     resources :movies
     resources :reviews
+    resources :comment
   
   end
   
@@ -37,7 +38,8 @@ Rails.application.routes.draw do
     resources :homes
     resources :genres
     resources :reviews
- 
+    resources :comment
+    
   end
  
 end
