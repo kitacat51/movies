@@ -27,8 +27,10 @@
                 <h3>レビュー</h3>
                 <ul>
                     <% @movie.reviews.each do |review| %>
-                    
                         <li><%= review.review_contents %></li>
+                        <li><%= link_to 'コメントする', new_comment_path(review_id: @review.id) %>
+                            
+                        </li>
                     <% end %>
                 </ul>
             </div>

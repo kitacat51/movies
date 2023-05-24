@@ -6,7 +6,13 @@ class Admin::ReviewsController < ApplicationController
      @review = Review.find(params[:id])
      @movie = Movie.find_by(tmdb_id: params[:id])
   end
-
+  
+   def destroy
+      review =Review.find(params[:id])
+      review.destroy
+      redirect_to admin_path
+   end
+  
   private
     
     def review_params

@@ -21,9 +21,11 @@
                 <%= review.movie.title %>
             </td>
             <td>
+                <%= link_to admin_user_path(review.user.id) do %>
                 <%= review.user.name %>
+                <% end %>
             </td>
-           
+
            </tbody>
            <% end %>
        </table>
