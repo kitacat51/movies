@@ -1,4 +1,4 @@
-class Admin::CommentController < ApplicationController
+class Admin::CommentsController < ApplicationController
   def new
   end
 

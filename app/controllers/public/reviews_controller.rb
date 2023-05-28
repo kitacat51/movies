@@ -13,7 +13,7 @@ class Public::ReviewsController < ApplicationController
     end
     
     def show
-        #@movie = Movie.find(params[:movie_id])
+        #@movie = Movie.find(params[:movie_id]) tmdbからの情報を表示させる時に使用
         @review = Review.find(params[:id])
         @user = @review.user.id
         @movie = Movie.find_by(tmdb_id: params[:id])

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "/movies/search" =>"movies#search",as: 'search'
     resources :movies
     resources :reviews
-    resources :comment
+    resources :comments
   
   end
   
