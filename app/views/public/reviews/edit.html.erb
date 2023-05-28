@@ -21,8 +21,20 @@
          <%= f.text_field :review_contents,class:'form-control',id:"review_contents", autofocus: true, id:"review_contents", placeholder:"内容" %>
       </div>
       <div class="form-group">
+        <div class="field" id="star">
          <label for="rate">評価</label>
+         <%= f.label :rate, "星評価：" %>
+         <%= f.hidden_field :rate, id: :review_star %>
+         <script>
+              var elem = document.getElementById('star');
+              var opt = {  
+                 starOn: "<%= asset_path('star-on.png') %>",
+                 starOff: "<%= asset_path('star-off.png') %>",
+                };
+                raty(elem,opt);
+           </script>
          <%#= f.float :rate, class:'form-control rate',id:"rate", autofocus: true, id:"rate", placeholder:"  " %>
+        </div>
       </div>
       
       <div class="form-group">

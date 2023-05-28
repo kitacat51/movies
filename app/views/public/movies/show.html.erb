@@ -27,7 +27,29 @@
                 <h3>レビュー</h3>
                 <ul>
                     <% @movie.reviews.each do |review| %>
+                    <%#= review.rate %>
                         <li><%= review.review_contents.truncate(20) %></li>
+                        <div id="star_rate_<%= review.id %>"><%#= review.rate %></div>
+                        <script>
+                          var elem = document.getElementById('star_rate_<%= review.id %>');
+                          var opt = {  
+                             starOn: "<%= asset_path('star-on.png') %>",
+                             starOff: "<%= asset_path('star-off.png') %>",
+                             readOnly: true,
+                             score: <%= review.rate || 0 %>
+                          };
+                            raty(elem,opt);
+                        </script>
+                         <script>
+                        //   //$('#star_rate_<%#= review.id %>').empty();
+                        //   $('#star_rate_<%#= review.id %>').raty({
+                        //      size: 36,
+                        //      starOff: '<%#= asset_path('star-off.png') %>',
+                        //      starOn: '<%#= asset_path('star-on.png') %>',
+                        //      readOnly: true,
+                        //      score: <%#= review.rate %>
+                        //     });
+                        </script>
                         <li><%= link_to'詳細',review_path(review.id) %></li>
                         
                     <% end %>

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :homes
     resources :genres
     resources :reviews
-    resources :comment
+    resources :comments
     
   end
  

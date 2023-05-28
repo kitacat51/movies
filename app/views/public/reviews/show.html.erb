@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
        <h2>レビュー</h2>
-       <table class="table">
         <tbody>
          <tr>
           <td><%#= link_to movie_path(@review.movie_id) do %>
@@ -10,36 +9,50 @@
               <%# end %>
           </td>
           <td><%= @review.review_contents %></td>
-
+          <div id="star_rate_<%= @review.rate %>"><%#= review.rate %></div>
+          <script>
+             var elem = document.getElementById('star_rate_<%= @review.rate %>');
+             var opt = {  
+                 starOn: "<%= asset_path('star-on.png') %>",
+                 starOff: "<%= asset_path('star-off.png') %>",
+                 readOnly: true,
+                 score: <%= @review.rate || 0 %>
+                };
+                raty(elem,opt);
+          </script>
+          <%= @review.user.name %>
           <%# binding.pry%>
-           <% if @user == current_user.id %>
+           <% if user_signed_in? && @user.id == current_user.id %>
              <td><%= link_to "Edit", edit_review_path(@review.id), class:"btn btn-sm btn-success" %></td>
              <td><%= link_to "Destroy", review_path,method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
            <% end %>
          </tr>
-        </tbody>
-       </table>
-       <li><%#= link_to "コメントする", new_comment_path %></li>
+        
       </div>
-      <div class="comment">
-       <% @comments.each do |comment| %>
-         <%= comment.body %>
-         <%= comment.user.name %>
-       <% end %>
+      <div class="row">
+       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <div class="comment">
+         <% @comments.each do |comment| %>
+           <%= comment.body %>
+           <%= comment.user.name %>
+         <% end %>
+        </div>
+       </div>
       </div>
       <div class="container">
-       testeste
-       <%= form_with model: @comment, url: "/comments", method: :post do |f| %>
-        <%= f.hidden_field :review_id, value: @review.id %>
-         <div class="form-group">
-             <%= f.text_area :body, rows: 5, class: 'form-control' %>
-         </div>
-
-         
-         <div class="form-group">
-             <%= f.submit 'コメントする', class: 'btn btn-primary' %>
-         </div>
+       <% if user_signed_in? %>
+        <%= form_with model: @comment, url: "/comments", method: :post do |f| %>
+         <%= f.hidden_field :review_id, value: @review.id %>
+          <div class="form-group">
+              <%= f.text_area :body, rows: 5, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+              <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
        <% end %>
-</div>
+        
+      </div>
+      </tbody>
   </div>
 </div>
