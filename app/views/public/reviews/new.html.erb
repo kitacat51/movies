@@ -1,5 +1,3 @@
-<script src="/raty.js">
-</script>
 <div class="container">
     <h2><%= @movie.title %></h2>
     <%= form_with model: @review, path: reviews_path, method: :post do |f| %>
@@ -13,12 +11,12 @@
            <%= f.label :rate, "星評価：" %>
            <%= f.hidden_field :rate, id: :review_star %>
            <script>
-             new Raty(document.querySelector('#star'), {
-               size     : 36,
-               starOff:  '<%= asset_path('star-off.png') %>',
-               starOn : '<%= asset_path('star-on.png') %>',
-               scoreName: 'review[star]',
-             })
+              var elem = document.getElementById('star');
+              var opt = {  
+                 starOn: "<%= asset_path('star-on.png') %>",
+                 starOff: "<%= asset_path('star-off.png') %>",
+                };
+                raty(elem,opt);
            </script>
          </div>
         </div>
