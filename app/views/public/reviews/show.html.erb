@@ -19,7 +19,27 @@
          </tr>
         </tbody>
        </table>
-       <li><%= link_to 'コメントする, new_comment_path %></li>
+       <li><%#= link_to "コメントする", new_comment_path %></li>
       </div>
+      <div class="comment">
+       <% @comments.each do |comment| %>
+         <%= comment.body %>
+         <%= comment.user.name %>
+       <% end %>
+      </div>
+      <div class="container">
+       testeste
+       <%= form_with model: @comment, url: "/comments", method: :post do |f| %>
+        <%= f.hidden_field :review_id, value: @review.id %>
+         <div class="form-group">
+             <%= f.text_area :body, rows: 5, class: 'form-control' %>
+         </div>
+
+         
+         <div class="form-group">
+             <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+         </div>
+       <% end %>
+</div>
   </div>
 </div>
