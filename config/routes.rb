@@ -35,6 +35,7 @@ Rails.application.routes.draw do
    get '/admin' => "admin/homes#top"
   namespace :admin do
  
+    delete 'reviews/:id' => 'reviews#destroy'
     resources :movies
     resources :users
     resources :homes

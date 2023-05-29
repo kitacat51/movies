@@ -9,6 +9,7 @@ class Admin::ReviewsController < ApplicationController
   
    def destroy
       review =Review.find(params[:id])
+      #byebug
       review.destroy
       redirect_to admin_path
    end
@@ -16,7 +17,7 @@ class Admin::ReviewsController < ApplicationController
   private
     
     def review_params
-        params.require(:review).permit(:movie_id, :review_contents, :rate).merge(:user_id)
+        params.require(:review).permit(:movie_id, :review_contents, :score).merge(:user_id)
     end
 
 end

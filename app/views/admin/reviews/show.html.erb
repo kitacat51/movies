@@ -7,7 +7,20 @@
               <h2><%= @review.movie.title %></h2>
               <h2><%= @review.user.name %></h2>
               <td><%= @review.review_contents %></td>
-              <td><%= link_to "Destroy", admin_path,method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
+              <td>
+               <div id="star_rate_<%= @review.rate %>"><%#= review.rate %></div>
+               <script>
+                  var elem = document.getElementById('star_rate_<%= @review.rate %>');
+                  var opt = {  
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      readOnly: true,
+                      score: <%= @review.rate || 0 %>
+                      };
+                      raty(elem,opt);
+               </script>
+              </td>
+              <td><%= link_to "削除", admin_review_path(@review.id),method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
           </tbody>
         </table>
     </div>

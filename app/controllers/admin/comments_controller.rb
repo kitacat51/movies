@@ -6,8 +6,26 @@ class Admin::CommentsController < ApplicationController
   end
 
   def index
+    @comments = Comment.all
+   # @comment = Comment.find(params[:id])
+    
   end
 
   def show
   end
+  
+  def destroy
+    comment =Comment.find(params[:id])
+    #byebug
+    comment.destroy
+    redirect_to admin_comments_path
+  end
+  
+  
+  private
+    
+  def comment_params
+        params.permit(:body, :review_id).merge(user_id: current_user.id)
+  end
+
 end
