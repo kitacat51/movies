@@ -32,8 +32,8 @@
             </td>
             <% end %>
          </table>
-         <%= link_to "編集", edit_path, class:"btn btn-sm btn-success" %>
-         <%#= link_to "退会", unsubscribe_path,method: :get,class:"btn btn-danger" %>
+         <%= link_to "編集", user_edit_path(@user), class:"btn btn-sm btn-success" %>
+         <%= link_to "退会", unsubscribe_path,method: :get,class:"btn btn-sm btn-danger" %>
     </div>
   </div>
 </div>

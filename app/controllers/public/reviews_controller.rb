@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
     def show
         #@movie = Movie.find(params[:movie_id]) tmdbからの情報を表示させる時に使用
         @review = Review.find(params[:id])
-        @user = @review.user.id
+        @user = @review.user
         @movie = Movie.find_by(tmdb_id: params[:id])
         @comments = Comment.all
 
@@ -31,6 +31,7 @@ class Public::ReviewsController < ApplicationController
 
     def update
       @review = Review.find(params[:id])
+       @review.rate = params[:score]
       if @review.update(review_params)
         flash[:notice] = "You have updated user successfully."
         redirect_to review_path(@review.id)
@@ -48,7 +49,7 @@ class Public::ReviewsController < ApplicationController
     private
     
     def review_params
-        params.require(:review).permit(:movie_id, :review_contents, :rate).merge(user_id: current_user.id)
+        params.require(:review).permit(:movie_id, :review_contents, :score).merge(user_id: current_user.id)
     end
     
     def is_matching_login_user

@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -38,10 +38,11 @@ class Public::UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :introduction)
     end
     
-    def is_matching_login_user
-       user_id = params[:id].to_i
-       unless user_id == current_user.id
-         redirect_to user_path(current_user)
-       end
-    end
+    # def is_matching_login_user
+    #   user_id = params[:id].to_i
+    
+    #   unless user_id == current_user.id
+    #     redirect_to  root_path
+    #   end
+    # end
 end

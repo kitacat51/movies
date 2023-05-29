@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'users/edit'
+  get 'users/:id/edit' => "public/users#edit", as: "user_edit"
   get 'users/update'
   get 'homes/top'
   get 'homes/about'
@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get "/users/information/edit" =>"users#edit",as: 'edit'
     patch "/users/information" =>"users#update",as: 'update'
     get "/movies/search" =>"movies#search",as: 'search'
+    get "users/unsubscribe" => "users#unsubscribe",as: 'unsubscribe'
+    patch "users/withdrawal" => "users#withdrawal",as: 'withdrawal'
     resources :movies
     resources :reviews
     resources :comments

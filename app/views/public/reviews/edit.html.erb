@@ -30,6 +30,7 @@
               var opt = {  
                  starOn: "<%= asset_path('star-on.png') %>",
                  starOff: "<%= asset_path('star-off.png') %>",
+                  score: <%= @review.rate || 0 %>
                 };
                 raty(elem,opt);
            </script>
