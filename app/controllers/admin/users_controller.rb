@@ -13,8 +13,9 @@ class Admin::UsersController < ApplicationController
     end
 
     def update
+      #byebug
       @user = User.find(params[:id])
-      if @user.updade(user_params)
+      if @user.update(user_params)
         redirect_to admin_user_path(@user.id)
       else
         render :edit
@@ -23,7 +24,7 @@ class Admin::UsersController < ApplicationController
     
   private
     def user_params
-      params.require(:user).permit(:name, :email, :is_deleted )
+      params.require(:user).permit(:name, :email,:introduction, :is_deleted )
     end
 
 end
