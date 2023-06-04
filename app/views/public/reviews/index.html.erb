@@ -7,18 +7,35 @@
              <tr>
                <th>映画タイトル</th>
                <th>ユーザー名</th>
+               <th>内容</th>
+               <th></th>
                <th colspan="3"></th>
              </tr>
            </thead>
            <% @reviews.each do |review| %>
            <tbody>
             <tr>
-             <td>
-                <%= link_to review_path(review.id) do %>
+             <td><%= link_to movie_path(review.movie.id) do %>
                 <%= review.movie.title %>
                 <% end %>
              </td>
              <td><%= review.user.name %></td>
+             <td><%= link_to review_path(review.id) do %>
+                 <%= review.review_contents %>
+                 <% end %>
+             </td>
+             <td><div id="star_rate_<%= review.rate %>"></div>
+              <script>
+                 var elem = document.getElementById('star_rate_<%= review.rate %>');
+                 var opt = {  
+                     starOn: "<%= asset_path('star-on.png') %>",
+                     starOff: "<%= asset_path('star-off.png') %>",
+                     readOnly: true,
+                     score: <%= review.rate || 0 %>
+                    };
+                    raty(elem,opt);
+              </script>
+            </td>
             </tr> 
             <% end %>
          </div>

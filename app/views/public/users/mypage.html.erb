@@ -2,32 +2,49 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>User info</h2>
+      <!--<div class="card" style="max-width: 400px;">-->
+      <!-- <img class="card-img" src="mypagelogo" alt="">-->
+      <!--   <div class="card-img-overlay">-->
+      <!--    <p class="text-black",class: "text-align: center";>ここにテキストが入ります。</p>-->
+      <!--   </div>-->
+      <!--</div>-->
+		<!--<div class="cover-img" style="background-image:url('<%#= asset_path('mypagelogo.png') %>');","background-repeat: no-repeat;" >-->
+		<!--	<div class="cover-text text-center">-->
+		<!--		<p style="color: #000000;">ここがテキストですよ！！</p>-->
+		<!--	</d#iv>-->
+		<!--</div>-->
+
+      <div class="header"><%= image_tag "mypagelogo",class: "img-fluid" %>
+         <h2>マイページ</h2>
+      </div>
         <label for="user_name">名前</label>
          <div class>
              <%= @user.name %>
          </div>
-         <label for="email">メールアドレス</label>
+         <label for="email"><i class="fad fa-ticket"></i>メールアドレス</label>
          <div class>
              <%= @user.email %>
          </div>
-         <label for="user_introduction">ひとこと。</label>
+         <label for="user_introduction"><i class="fad fa-ticket"></i>ひとこと。</label>
          <div class>
              <%= @user.introduction %>
          </div>
          
-         <label for="review"></label>
+         <label for="review"><i class="fad fa-ticket"></i>レビュー</label>
          <table class>
             <thead>
               <tr>
-                <th>Review</th>
+                <th>映画タイトル</th>
+                <th>レビュー内容</th>
+                <th></th>
               </tr>
             </thead>
             <% @reviews.each do |review| %>
             <tbody>
-            <td>
-                <%= link_to review_path(review.id) do %>
-                <%= review.movie.title %>
+            <td><%= review.movie.title %></td>
+            <td><%= review.review_contents %></td>
+            <td><%= link_to review_path(review.id) do %>
+                <i class="fas fa-wrench"></i>
                 <% end %>
             </td>
             <% end %>

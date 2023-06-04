@@ -23,6 +23,7 @@ class Public::ReviewsController < ApplicationController
     
     def index
         @reviews = Review.all
+        @movie = Movie.find_by(tmdb_id: params[:id])
     end
     
     def edit
