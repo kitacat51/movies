@@ -17,8 +17,7 @@ class Public::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
         @user = @review.user
         @movie = Movie.find_by(tmdb_id: params[:id])
-        @comments = Comment.all
-
+        @comments = @review.comments
     end
     
     def index

@@ -9,9 +9,9 @@
               <%# end %>
           </td>
           <td><%= @review.review_contents %></td>
-          <div id="star_rate_<%= @review.rate %>"><%#= review.rate %></div>
+          <div id="star_rate_<%= @review.id %>"><%#= review.rate %></div>
           <script>
-             var elem = document.getElementById('star_rate_<%= @review.rate %>');
+             var elem = document.getElementById('star_rate_<%= @review.id %>');
              var opt = {  
                  starOn: "<%= asset_path('star-on.png') %>",
                  starOff: "<%= asset_path('star-off.png') %>",
