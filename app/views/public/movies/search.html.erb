@@ -28,7 +28,7 @@
               <div class="card">
                   <div class="card-upperinfo">
                       <%if @movieinfo['table']['results'][i]['table']['title'].present?%>
-                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'],movie_path(@movieinfo['table']['results'][i]['table']['id']) %></h3>
+                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'],movie_path(@movieinfo['table']['results'][i]['table']['id'], tmdb_id: @movieinfo['table']['results'][i]['table']['id']) %></h3>
                       <%end%>
 
                       <% if @movieinfo['table']['results'][i]['table']['release_date'].present? %>
@@ -59,7 +59,7 @@
                   <div class="card-upperinfo">
                       <%# byebug %>
                       <%if @movieinfo['table']['results'][i]['table']['title'].present?%>
-                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'],movie_path(@movieinfo['table']['results'][i]['table']['id']) %></h3>
+                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'],movie_path(@movieinfo['table']['results'][i]['table']['id'], tmdb_id: @movieinfo['table']['results'][i]['table']['id']) %></h3>
                       <%end%>
 
                       <% if @movieinfo['table']['results'][i]['table']['release_date'].present? %>
@@ -93,7 +93,7 @@
               <div class="card">
                   <div class="card-upperinfo">
                       <%if @movieinfo['table']['results'][i]['table']['title'].present?%>
-                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'], movie_path(@movieinfo['table']['results'][i]['table']['id'])%></h3>
+                          <h3><%= link_to @movieinfo['table']['results'][i]['table']['title'], movie_path(@movieinfo['table']['results'][i]['table']['id'], tmdb_id: @movieinfo['table']['results'][i]['table']['id'])%></h3>
                       <%end%>
 
                       <% if @movieinfo['table']['results'][i]['table']['release_date'].present? %>

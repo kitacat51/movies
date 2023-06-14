@@ -27,7 +27,11 @@ class Public::MoviesController < ApplicationController
  end
 
  def show
-  @movie = Movie.find(params[:id])
+  if params[:tmdb_id]
+   @movie = Movie.find_by(tmdb_id: params[:tmdb_id])
+  else
+   @movie = Movie.find(params[:id])
+  end
   # searchと併用しているため、Movieがデータがない場合、
   # データを作成してからshowページを表示するようにしている。
   if @movie.nil?
