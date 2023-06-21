@@ -8,7 +8,7 @@ class Public::ReviewsController < ApplicationController
         @review = Review.new(review_params)
         @review.rate = params[:score]
         @review.save
-         redirect_to movie_path(@review.movie.tmdb_id)
+         redirect_to movie_path(@review.movie.id)
         
     end
     

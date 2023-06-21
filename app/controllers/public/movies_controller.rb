@@ -54,7 +54,7 @@ class Public::MoviesController < ApplicationController
     end
    end
   end
-  #Tmddからどんな情報が取得できているか表示するときに使う
+  #Tmdbからどんな情報が取得できているか表示するときに使う
   #@movieinfo = Tmdb::Movie.detail(params[:id])
   #if @movieinfo.blank?
   #  @movieinfo = Tmdb::Movie.detail(@movieinfo.id)
