@@ -39,15 +39,20 @@
      </tr>
     </table>
     <table>
-      <tr>
-        <th>映画タイトル</th>
-        <th>レビュー内容</th>
-      </tr>
-      <tr>
-        <td>
-          
-        </td>
-      </tr>
+       <head>
+         <tr>
+           <th>映画タイトル</th>
+           <th>レビュー内容</th>
+           <th></th>
+         </tr>
+       </head>
+       <% @reviews.each do |review| %>
+       <tbody>
+           <td><%= review.movie.title %></td>
+           <td><%= review.review_contents %></td>
+           <td><%= link_to "詳細", admin_review_path(review.id), class:"btn btn-sm btn-info" %></td>
+       </tbody>
+       <% end %>
     </table>
     </div>
   </div>

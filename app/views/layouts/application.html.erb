@@ -52,7 +52,7 @@
             <% elsif admin_signed_in? %>
              <li>
               <%= link_to admin_path,method: :get,class:'nav-link text-light' do %>
-               <i class="fas fa-user"></i>Admin
+              <i class="fas fa-film"></i>Reviews
               <% end %>
              </li>
              <li>
@@ -70,11 +70,11 @@
                 <i class="fas fa-film"></i>Genres
               <% end %>
              </li>
-             <li>
-              <%= link_to reviews_path,method: :get,class:'nav-link text-light' do %>
-              <i class="fas fa-film"></i>Reviews
-              <% end %>
-             </li>
+             <!--<li>-->
+             <!-- <%#= link_to admin_reviews_path,method: :get,class:'nav-link text-light' do %>-->
+             <!-- <i class="fas fa-film"></i>Reviews-->
+             <!-- <%# end %>-->
+             <!--</li>-->
              <li>
               <%= link_to destroy_admin_session_path,method: :delete,class:'nav-link text-light' do %>
                <i class="fas fa-sign-out-alt"></i></i> Log out
