@@ -6,25 +6,18 @@
       <div class="header"><%#= image_tag "mypagelogo",class: "img-fluid" %>
          <h2>マイページ</h2>
       </div>
-        <label for="user_name">名前</label>
-         <div class>
-             <%= @user.name %>
-         </div>
-         <label for="email"><i class="fad fa-ticket"></i>メールアドレス</label>
-         <div class>
-             <%= @user.email %>
-         </div>
-         <label for="user_introduction"><i class="fad fa-ticket"></i>ひとこと。</label>
-         <div class>
-             <%= @user.introduction %>
-         </div>
-         
-         <label for="review"><i class="fad fa-ticket"></i>レビュー</label>
+        <div class="text-white", style="background-color:#6b8eb3" >　名前</div>
+         <p><%= @user.name %></p>
+        <div class="text-white", style="background-color:#6b8eb3" >　メールアドレス</div>
+         <p><%= @user.email %></p>
+        <div class="text-white", style="background-color:#6b8eb3" >　ひとこと。</div>
+         <p><%= @user.introduction %></p>
+        <div class="text-white", style="background-color:#6b8eb3" >　レビュー</div>
          <table class>
             <thead>
               <tr>
                 <th>映画タイトル</th>
-                <th>レビュー内容</th>
+                <th>内容</th>
                 <th></th>
               </tr>
             </thead>
