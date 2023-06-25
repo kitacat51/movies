@@ -21,16 +21,27 @@
                 raty(elem,opt);
           </script></br>
           <%= @review.user.name %>
-         
+           <div class="form">
            <% if user_signed_in? && @user.id == current_user.id %>
-             <td><%= link_to "Edit", edit_review_path(@review.id), class:"btn btn-sm btn-primary" %></td>
-             <td><%= link_to "Destroy", review_path,method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
+             <td><%= link_to "編集", edit_review_path(@review.id), class:"btn btn-sm btn-primary" %></td>
+             <td><%= link_to "削除", review_path,method: :delete, "data-confirm" =>"本当に消しますか?", class:"btn btn-sm btn-danger" %></td>
            <% end %>
+           </div>
          </tr>
-        <% @comments.each do |comment| %>
-           <%= comment.body %>
-           <%= comment.user.name %>
-         <% end %>
+        <table>
+         <thead>
+           <tr>
+            <th>コメント</th>
+            <th></th>
+           </tr>
+         </thead>
+          <% @comments.each do |comment| %>
+          <tbody>
+           <td><%= comment.body %></td>
+           <td><%= comment.user.name %></td>
+          <% end %>
+          </tbody> 
+        </table> 
         </div>
        </div>
       </div>

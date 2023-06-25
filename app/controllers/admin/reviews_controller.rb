@@ -1,5 +1,7 @@
 class Admin::ReviewsController < ApplicationController
 
+before_action :authenticate_user!
+
   def show
     # @review = Review.find(params[:id])
     # @movie = Movie.find(params[:movie_id])
