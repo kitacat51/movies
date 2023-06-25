@@ -22,10 +22,12 @@
                     <% end %>
                 </ul>
             </div>
-            <%= link_to 'レビュー', new_review_path(movie_id: @movie.id), class: 'btn btn-info' %>
+            <% if user_signed_in? %>
+            <%= link_to 'レビューする', new_review_path(movie_id: @movie.id), class: 'btn btn-info' %>
+            <% end %>
             <div class="reviews mt-3">
                 <h3>レビュー</h3>
-                <ul>
+                <table class="table">
                     <% @movie.reviews.each do |review| %>
                     <%#= review.rate %>
                         <li><%= review.review_contents.truncate(20) %></li>
@@ -53,7 +55,7 @@
                         <li><%= link_to'詳細',review_path(review.id) %></li>
                         
                     <% end %>
-                </ul>
+                </table>
             </div>
         </div>
     </div>

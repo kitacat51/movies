@@ -32,7 +32,7 @@
             <tbody>
             <td><%= review.movie.title %></td>
             <td><%= review.review_contents %></td>
-            <td><%= link_to review_path(review.id) do %>
+            <td><%= link_to edit_review_path(review.id) do %>
                 <i class="fas fa-wrench"></i>
                 <% end %>
             </td>
