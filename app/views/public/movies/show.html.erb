@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <% if user_signed_in? %>
-            <%= link_to 'レビューする', new_review_path(movie_id: @movie.id), class: 'btn btn-info' %>
+            <%= link_to 'レビューする', new_review_path(movie_id: @movie.id), class: 'btn btn-warning' %>
             <% end %>
             <div class="reviews mt-3">
                 <h3>レビュー</h3>
