@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+   <h1><%= @user.name %>
+    の会員詳細
+   </h1>
+
+    <table>
+     <tr>
+       <th>会員ID</th>
+       <td><%= @user.id %></td>
+     </tr>
+     <tr>
+       <th>氏名</th>
+       <td><%= @user.name %>
+       </td>
+     </tr>
+     <tr>
+       <th>メールアドレス</th>
+       <td><%= @user.email %></td>
+     </tr>
+     <tr>
+       <th><label for="user_introduction">ひとこと。</label></th>
+       <td><%= @user.introduction %></td>
+     </tr>
+     <tr>
+       <th>会員ステータス</th>
+       <td><% if @user.is_deleted == false %>
+         <%= "有効" %>
+         <% else %>
+         <%= "退会" %>
+         <% end %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <%= link_to "編集する",edit_admin_user_path(@user.id),class:"btn btn-sm btn-success" %>
+       </td>
+     </tr>
+    </table>
+    <table>
+       <head>
+         <tr>
+           <th>映画タイトル</th>
+           <th>レビュー内容</th>
+           <th></th>
+         </tr>
+       </head>
+       <% @reviews.each do |review| %>
+       <tbody>
+           <td><%= review.movie.title %></td>
+           <td><%= review.review_contents %></td>
+           <td><%= link_to "詳細", admin_review_path(review.id), class:"btn btn-sm btn-info" %></td>
+       </tbody>
+       <% end %>
+    </table>
+    </div>
+  </div>
+</div>

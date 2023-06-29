@@ -1,0 +1,11 @@
+<div class="container">
+    <%= form_with model: @comment, path: comments_path, method: :post do |f| %>
+      <%= f.hidden_field :review_id, value: params[:review_id] %>
+        <div class="form-group">
+            <%= f.text_area :body, rows: 5, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= f.submit 'コメントする', class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+</div>

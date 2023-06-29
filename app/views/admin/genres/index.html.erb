@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>登録されたジャンル一覧</h3>
+      <table>
+          <thead>
+              <tr>
+                  <th></th>
+              </tr>
+          </thead>
+        <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= genre.name %>
+          </td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>    
+  </div>    
+</div>    

@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= image_tag "https://image.tmdb.org/t/p/w1280#{@movie.image}", class: 'img-fluid'%>
+        </div>
+        <div class="col-md-6">
+            <%# Tmdb-APIによって送られた情報を全て表示する %>
+            <%#= @movieinfo.inspect %>
+            <h2><%= @movie.title %></h2>
+            <div class="published">
+                <h4>公開日/<%= @movie.published %></h4>
+            </div>
+            <div class="overview">
+                <%= @movie.overview %>
+            </div>
+            <div class="genres mt-3">
+                <h3>ジャンル</h3>
+                <ul>
+                    <% @movie.genres.each do |genre| %>
+                    
+                        <li><%= genre.name %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <% if user_signed_in? %>
+            <%= link_to 'レビューする', new_review_path(movie_id: @movie.id), class: 'btn btn-info' %>
+            <% end %>
+            <div class="reviews mt-3">
+                <h3>レビュー</h3>
+                <ul>
+                    <% @movie.reviews.each do |review| %>
+                    <%#= review.rate %>
+                        <li class='hoge'><%= review.review_contents.truncate(20) %></li>
+                        <div id="star_rate_<%= review.id %>"><%#= review.rate %></div>
+                        <script>
+                          var elem = document.getElementById('star_rate_<%= review.id %>');
+                          var opt = {  
+                             starOn: "<%= asset_path('star-on.png') %>",
+                             starOff: "<%= asset_path('star-off.png') %>",
+                             readOnly: true,
+                             score: <%= review.rate || 0 %>
+                          };
+                            raty(elem,opt);
+                        </script>
+                         <script>
+                        //   //$('#star_rate_<%#= review.id %>').empty();
+                        //   $('#star_rate_<%#= review.id %>').raty({
+                        //      size: 36,
+                        //      starOff: '<%#= asset_path('star-off.png') %>',
+                        //      starOn: '<%#= asset_path('star-on.png') %>',
+                        //      readOnly: true,
+                        //      score: <%#= review.rate %>
+                        //     });
+                        </script>
+                        <li class='hoge'><%= link_to'詳細',review_path(review.id) %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
