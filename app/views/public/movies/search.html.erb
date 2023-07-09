@@ -47,13 +47,13 @@
       </div>
     </div>
 </div>
-<% elsif params[:movie_genre].present? %>
 <div class="container px-5 px-sm-0">
+<% elsif params[:movie_genre].present? %>
     <h2><%= params[:movie_genre] %>の検索結果</h2>
     <div class="row">
-      <div class="col-md-3">
        <% i = 0 %>
        <div class="card-wrapper">
+         <div class="col-sm-12 col-md-4 col-lg-5 px-5 px-sm-0 mx-auto">
           <% while i < @movieinfo['table']['results'].count %>
               <div class="card">
                   <div class="card-upperinfo">
@@ -83,7 +83,6 @@
     <%# 検索されていない時にトレンドコンテンツを表示する %>
 <div class="container px-5 px-sm-0">
     <h2>本日の世界のトレンド</h2>
-    ====================
   <div class="row">
     
       <% i = 0 %>
