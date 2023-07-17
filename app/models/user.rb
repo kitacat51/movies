@@ -6,5 +6,8 @@ class User < ApplicationRecord
          
   has_many :reviews
   has_many :comments
+  
+  validates :name, uniqueness: true, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 100 }
          
 end

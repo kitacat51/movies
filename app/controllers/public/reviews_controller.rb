@@ -26,14 +26,14 @@ class Public::ReviewsController < ApplicationController
     end
     
     def edit
-      @review = Review.find(params[:id])
+        @review = Review.find(params[:id])
     end
 
     def update
       @review = Review.find(params[:id])
        @review.rate = params[:score]
       if @review.update(review_params)
-        flash[:notice] = "You have updated user successfully."
+        flash[:notice] = "更新しました"
         redirect_to review_path(@review.id)
       else
         render :edit_review_path
